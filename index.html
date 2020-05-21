@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <!-- Required meta tags -->
+  <!-- <meta charset="utf-8"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <!-- Fonts Merriweather and Open Sans -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>RSS_reader!</title>
+
+  <!-- We use Merriweather font for headings and Open Sans fonts for other text - THEY ARE LINKED -->
+</head>
+
+<body>
+
+
+
+  <div id="app">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <label class="navbar-brand " style="color: grey">RSS</label>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <!-- <form class="form-inline mx-auto" style="width:100%;" > -->
+            <ul class="navbar-nav w-100">
+              <li class="nav-item w-100 w-lg-55 my-2 my-lg-0 d-flex justify-content-end" style="max-height: 42px;">
+                <input name="feedurl" type="text" class="form-control my-2 my-sm-0" placeholder="URL" v-on:change="changeHandler" style="width: 100PX;">&nbsp;
+                <button class="btn my-2 my-sm-0 " style="color: grey" value="znova" name="znova" v-on:click="sortAsc">ASC</button>
+                <button class="btn my-2 my-sm-0 " style="color: grey" value="znova" name="znova" v-on:click="sortDesc">DESC</button>
+               
+              </li>
+              <li class="nav-item ml-auto">
+                <button class="btn my-2 my-sm-0 ml-auto" style="color: grey" value="znova" onClick="window.location.reload();">Reload / Fetch</button>
+              </li>
+            </ul>
+          <!-- </form> -->
+        </div>
+      </nav>
+    </header>
+
+    <div class="container row mx-auto">
+      <div class=" col-md-4 col-12">
+        <ul v-for="prvok in items.items">
+          <div class="row">
+            <div class="card col-12">
+              <div class="card-body">
+                <a :href="prvok.link" class="btn">{{ prvok.title }}</a>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class=" col-md-8 col-12">
+        <ul v-for="prvok in items.items">
+          <div class="card">
+            <img class="card-img-top" :src="prvok.enclosure.link" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">{{ prvok.title }}</h5>
+                <p>{{ prvok.pubDate }}</p>
+                <p class="card-text">{{ prvok.description }}</p>
+                <a :href="prvok.link" class="btn">Viac TU!</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.1/vue-resource.min.js'></script>
+  <script src="./script.js"></script>
+  <!-- Optional JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
