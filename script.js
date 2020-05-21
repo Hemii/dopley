@@ -1,5 +1,5 @@
-new Vue({ // vo vue komponent sa musis odkazovat cez slovicko this.
-          //v html davaj bez this
+new Vue({ 
+
   el: "#app",
   data: {
     title: "WPUBproject RSS Reader",
@@ -15,19 +15,12 @@ new Vue({ // vo vue komponent sa musis odkazovat cez slovicko this.
 
   methods: {
     fetchData: function () {
-
       this.$http.get(this.CORS + this.feed).then(response => {
         this.items = response.body;
         
       });
     },
-    changeHandler: function (event) {
-      this.feed = event.target.value;
-      console.log(this.feed);
-      this.fetchData();
-    },
-
-
+   
     changeHandler: function (event) {
       this.feed = event.target.value;
       this.fetchData();
